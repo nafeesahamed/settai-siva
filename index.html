@@ -1,0 +1,543 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Settai Siva</title>
+<meta name="description" content="Settai Siva builds teams that build the future, with a lot of mischief along the way.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bagel+Fat+One&family=Gabarito:wght@400;600;800&family=Noto+Sans+Tamil:wght@800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --turmeric: #FFC93C;
+    --ink: #14213D;
+    --pink: #FF3E8A;
+    --teal: #00A6A6;
+    --paper: #FFFDF7;
+    --shadow: 6px 6px 0 var(--ink);
+    --display: "Bagel Fat One", system-ui, sans-serif;
+    --body: "Gabarito", system-ui, sans-serif;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--turmeric);
+    color: var(--ink);
+    font-family: var(--body);
+    font-size: 1.125rem;
+    line-height: 1.5;
+    overflow-x: hidden;
+  }
+  body.shake { animation: shake .5s ease-in-out 2; }
+  @keyframes shake {
+    0%, 100% { transform: rotate(0); }
+    25% { transform: rotate(-1.5deg) translateX(-6px); }
+    75% { transform: rotate(1.5deg) translateX(6px); }
+  }
+
+  a { color: inherit; }
+  :focus-visible { outline: 4px solid var(--pink); outline-offset: 4px; border-radius: 6px; }
+
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 16px; }
+
+  /* ---------- Nav ---------- */
+  nav {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 20px 0;
+  }
+  .logo { font-family: var(--display); font-size: 1.5rem; text-decoration: none; }
+  .nav-links { display: flex; gap: 20px; font-weight: 600; }
+  .nav-links a { text-decoration: none; }
+  .nav-links a:hover { text-decoration: underline wavy var(--pink) 2px; text-underline-offset: 6px; }
+
+  /* ---------- Hero ---------- */
+  .hero {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: 40px;
+    align-items: center;
+    padding: 40px 0 96px;
+  }
+  .name {
+    font-family: var(--display);
+    font-weight: 400;
+    font-size: clamp(4.5rem, 15vw, 11rem);
+    line-height: .86;
+    margin: 0;
+    letter-spacing: -.01em;
+  }
+  .name .row { display: block; white-space: nowrap; }
+  .name .row:last-child { color: var(--paper); -webkit-text-stroke: 3px var(--ink); paint-order: stroke fill; text-shadow: 6px 6px 0 var(--ink); }
+  .name .ch {
+    display: inline-block;
+    transition: transform .25s cubic-bezier(.3, 1.8, .5, 1);
+    cursor: default;
+  }
+  .name .ch:nth-child(odd) { transform: rotate(-3deg); }
+  .name .ch:nth-child(even) { transform: rotate(4deg) translateY(4px); }
+  .name .ch:hover { transform: translateY(-18px) rotate(-10deg) scale(1.1); }
+
+  .tagline {
+    font-size: clamp(1.25rem, 2.4vw, 1.6rem);
+    font-weight: 600;
+    max-width: 30ch;
+    margin: 28px 0 32px;
+  }
+
+  .btn {
+    display: inline-flex; align-items: center; gap: 10px;
+    font: 800 1.125rem var(--body);
+    padding: 14px 24px;
+    background: var(--pink);
+    color: var(--paper);
+    border: 3px solid var(--ink);
+    border-radius: 999px;
+    box-shadow: var(--shadow);
+    text-decoration: none;
+    cursor: pointer;
+    transition: transform .12s, box-shadow .12s;
+  }
+  .btn:hover { transform: translate(-2px, -2px); box-shadow: 8px 8px 0 var(--ink); }
+  .btn:active { transform: translate(4px, 4px); box-shadow: 2px 2px 0 var(--ink); }
+  .btn.ghost { background: var(--paper); color: var(--ink); }
+  .actions { display: flex; flex-wrap: wrap; gap: 16px; }
+
+  /* Polaroid */
+  .polaroid {
+    position: relative;
+    justify-self: center;
+    width: min(360px, 100%);
+    background: var(--paper);
+    border: 3px solid var(--ink);
+    padding: 16px 16px 56px;
+    box-shadow: 10px 10px 0 var(--ink);
+    transform: rotate(4deg);
+  }
+  .polaroid .photo {
+    aspect-ratio: 1;
+    background: var(--teal);
+    border: 3px solid var(--ink);
+    display: grid; place-items: center;
+    overflow: hidden;
+  }
+  .polaroid .photo img { width: 100%; height: 100%; object-fit: cover; object-position: 55% 30%; display: block; }
+  .polaroid .photo .fallback { font-family: var(--display); font-size: 8rem; color: var(--paper); -webkit-text-stroke: 3px var(--ink); }
+  .polaroid figcaption {
+    position: absolute; left: 0; right: 0; bottom: 14px;
+    text-align: center;
+    font-weight: 600;
+    font-size: 1.05rem;
+  }
+  .tape {
+    position: absolute; top: -18px; left: 50%;
+    width: 120px; height: 34px;
+    background: rgba(255, 62, 138, .75);
+    border: 2px solid var(--ink);
+    transform: translateX(-50%) rotate(-6deg);
+  }
+  .sticker {
+    position: absolute;
+    background: var(--paper);
+    border: 3px solid var(--ink);
+    border-radius: 999px;
+    padding: 8px 16px;
+    font-weight: 800;
+    font-size: 1rem;
+    white-space: nowrap;
+    box-shadow: 4px 4px 0 var(--ink);
+  }
+  .sticker.a { top: 22%; left: -56px; transform: rotate(-12deg); background: var(--turmeric); }
+  .sticker.b { bottom: 18%; right: -40px; transform: rotate(9deg); }
+
+  /* ---------- Marquee ---------- */
+  .marquee {
+    background: var(--ink);
+    color: var(--turmeric);
+    border-block: 3px solid var(--ink);
+    overflow: hidden;
+    transform: rotate(-2deg);
+    margin: 0 -20px;
+  }
+  .marquee .track {
+    display: flex; gap: 40px;
+    width: max-content;
+    padding: 14px 0;
+    font-family: var(--display);
+    font-size: clamp(1.5rem, 3.5vw, 2.25rem);
+    animation: scroll 28s linear infinite;
+  }
+  .marquee .track span:nth-child(3n+2) { color: var(--pink); }
+  .marquee .track span:nth-child(3n) { color: var(--paper); }
+  @keyframes scroll { to { transform: translateX(-50%); } }
+
+  /* ---------- Sections ---------- */
+  section { padding: 112px 0; }
+  h2 {
+    font-family: var(--display);
+    font-weight: 400;
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    line-height: 1;
+    margin: 0 0 40px;
+  }
+
+  /* Dictionary */
+  .dict {
+    background: var(--paper);
+    border: 3px solid var(--ink);
+    box-shadow: 10px 10px 0 var(--ink);
+    padding: clamp(24px, 5vw, 56px);
+    max-width: 760px;
+    transform: rotate(-1deg);
+  }
+  .dict .word { font-family: var(--display); font-size: clamp(2.5rem, 7vw, 4.5rem); line-height: 1; margin: 0; }
+  .dict .word [lang="ta"] { font-family: "Noto Sans Tamil", var(--body); font-weight: 800; font-size: .6em; vertical-align: middle; }
+  .dict .say { font-size: 1.25rem; margin: 8px 0 24px; color: var(--teal); font-weight: 600; }
+  .dict ol { margin: 0; padding-left: 1.4em; }
+  .dict li { margin-bottom: 16px; max-width: 60ch; }
+  .dict li::marker { font-weight: 800; color: var(--pink); }
+  .dict .eg { display: block; font-style: italic; opacity: .75; }
+
+  /* Two modes */
+  .modes { display: grid; grid-template-columns: 1fr 1fr; gap: 0; border: 3px solid var(--ink); box-shadow: 10px 10px 0 var(--ink); }
+  .mode { padding: clamp(24px, 4vw, 48px); }
+  .mode + .mode { border-left: 3px solid var(--ink); }
+  .mode.day { background: var(--paper); }
+  .mode.settai { background: var(--pink); color: var(--paper); }
+  .mode h3 { font-family: var(--display); font-weight: 400; font-size: 2rem; margin: 0 0 4px; }
+  .mode .sub { margin: 0 0 24px; font-weight: 600; opacity: .8; }
+  .mode ul { list-style: none; padding: 0; margin: 0; }
+  .mode li { padding: 12px 0; border-top: 2px dashed currentColor; display: flex; gap: 12px; }
+  .mode li span:first-child { font-size: 1.4rem; line-height: 1.1; }
+
+  /* Photo wall */
+  .wall {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    align-items: start;
+    padding-top: 16px;
+  }
+  .wall figure {
+    margin: 0;
+    background: var(--paper);
+    border: 3px solid var(--ink);
+    padding: 14px 14px 0;
+    box-shadow: 8px 8px 0 var(--ink);
+    position: relative;
+    transition: transform .25s cubic-bezier(.3, 1.8, .5, 1);
+  }
+  .wall figure:nth-child(1) { transform: rotate(-4deg); }
+  .wall figure:nth-child(2) { transform: rotate(3deg) translateY(32px); }
+  .wall figure:nth-child(3) { transform: rotate(-2deg); }
+  .wall figure:hover { transform: rotate(0) scale(1.04); z-index: 2; }
+  .wall img {
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    display: block;
+    border: 3px solid var(--ink);
+  }
+  .wall figcaption { padding: 14px 4px 18px; font-weight: 600; text-align: center; }
+  .wall .pin {
+    position: absolute; top: -14px; left: 50%;
+    width: 28px; height: 28px;
+    background: var(--pink);
+    border: 3px solid var(--ink);
+    border-radius: 50%;
+    transform: translateX(-50%);
+  }
+  .wall figure:nth-child(2) .pin { background: var(--teal); }
+
+  /* Settai meter */
+  #meter { background: var(--teal); border-block: 3px solid var(--ink); }
+  #meter h2 { color: var(--paper); -webkit-text-stroke: 2px var(--ink); paint-order: stroke fill; text-shadow: 5px 5px 0 var(--ink); }
+  .meter-box { max-width: 720px; }
+  .meter-intro { font-weight: 600; margin: -16px 0 32px; max-width: 50ch; }
+  .gauge {
+    height: 48px;
+    background: var(--paper);
+    border: 3px solid var(--ink);
+    border-radius: 999px;
+    box-shadow: var(--shadow);
+    overflow: hidden;
+  }
+  .gauge .fill {
+    height: 100%;
+    width: 0%;
+    background: repeating-linear-gradient(-45deg, var(--pink) 0 18px, #ff5c9d 18px 36px);
+    border-right: 3px solid var(--ink);
+    transition: width .35s cubic-bezier(.3, 1.6, .5, 1);
+  }
+  .gauge .fill[style*="width: 0%"] { border-right: 0; }
+  .level {
+    font-family: var(--display);
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    margin: 24px 0 28px;
+    min-height: 1.2em;
+    color: var(--paper);
+    -webkit-text-stroke: 1.5px var(--ink);
+    paint-order: stroke fill;
+  }
+  .level .face { -webkit-text-stroke: 0; }
+
+  /* Follow */
+  .follow { text-align: center; }
+  .follow h2 { margin-bottom: 16px; }
+  .follow p { font-size: 1.25rem; font-weight: 600; margin: 0 auto 36px; max-width: 40ch; }
+  .handle {
+    display: inline-block;
+    font-family: var(--display);
+    font-size: clamp(1.75rem, 6vw, 3.5rem);
+    background: var(--paper);
+    border: 3px solid var(--ink);
+    box-shadow: 10px 10px 0 var(--ink);
+    padding: 12px 32px;
+    border-radius: 24px;
+    text-decoration: none;
+    transform: rotate(-2deg);
+    transition: transform .2s cubic-bezier(.3, 1.8, .5, 1);
+  }
+  .handle:hover { transform: rotate(2deg) scale(1.04); }
+
+  footer { padding: 32px 0 48px; text-align: center; font-weight: 600; }
+
+  /* Emoji rain */
+  .drop {
+    position: fixed; top: -60px;
+    font-size: 2.5rem;
+    pointer-events: none;
+    z-index: 50;
+    animation: fall linear forwards;
+  }
+  @keyframes fall { to { transform: translateY(110vh) rotate(540deg); } }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 820px) {
+    .hero { grid-template-columns: 1fr; padding-bottom: 72px; }
+    .polaroid { width: min(300px, 82%); margin-top: 24px; }
+    .sticker.a { left: -24px; }
+    .sticker.b { right: -20px; }
+    .modes { grid-template-columns: 1fr; }
+    .wall { grid-template-columns: 1fr; gap: 48px; max-width: 360px; margin: 0 auto; }
+    .wall figure:nth-child(2) { transform: rotate(3deg); }
+    .mode + .mode { border-left: 0; border-top: 3px solid var(--ink); }
+    section { padding: 80px 0; }
+    .nav-links { display: none; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <nav>
+    <a class="logo" href="#top">S.S.</a>
+    <div class="nav-links">
+      <a href="#meaning">The name</a>
+      <a href="#modes">Two modes</a>
+      <a href="#photos">Photos</a>
+      <a href="#meter">Settai meter</a>
+      <a href="#follow">Instagram</a>
+    </div>
+  </nav>
+
+  <header class="hero" id="top">
+    <div>
+      <h1 class="name" aria-label="Settai Siva">
+        <span class="row" aria-hidden="true">Settai</span>
+        <span class="row" aria-hidden="true">Siva</span>
+      </h1>
+      <p class="tagline">Building teams that build the future. Causing harmless chaos in the meantime. 🚀</p>
+      <div class="actions">
+        <a class="btn" href="#meter">Test the mischief</a>
+        <a class="btn ghost" href="https://www.instagram.com/settai_siva007" target="_blank" rel="noopener">Follow on Instagram</a>
+      </div>
+    </div>
+
+    <figure class="polaroid">
+      <span class="tape" aria-hidden="true"></span>
+      <div class="photo">
+        <img src="photos/cap.jpg" alt="Siva in a grey cap, giving the camera a sideways look" onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'fallback',textContent:'S'}))">
+      </div>
+      <figcaption>Innocent face. Do not trust. 😇</figcaption>
+      <span class="sticker a" aria-hidden="true">Team builder 🛠️</span>
+      <span class="sticker b" aria-hidden="true">Chief settai officer</span>
+    </figure>
+  </header>
+</div>
+
+<div class="marquee" aria-hidden="true">
+  <div class="track">
+    <span>Settai mode on</span><span>🚀</span><span>Team builder</span><span>😜</span><span>Professional prankster</span><span>⚡</span><span>Future builder</span><span>🔥</span>
+    <span>Settai mode on</span><span>🚀</span><span>Team builder</span><span>😜</span><span>Professional prankster</span><span>⚡</span><span>Future builder</span><span>🔥</span>
+  </div>
+</div>
+
+<main>
+  <section id="meaning">
+    <div class="wrap">
+      <h2>So, what's a settai?</h2>
+      <article class="dict">
+        <p class="word">sēṭṭai <span lang="ta">(சேட்டை)</span></p>
+        <p class="say">noun, Tamil. Say it like you mean trouble.</p>
+        <ol>
+          <li>Mischief. The playful kind that makes everyone laugh, including the victim, eventually.
+            <span class="eg">"Who hid the office stapler again? Settai."</span></li>
+          <li>The energy in a room right before Siva walks in.
+            <span class="eg">"Things were calm. Then the settai arrived."</span></li>
+          <li>A leadership style. Build a team that trusts each other enough to joke, and they'll build anything.
+            <span class="eg">"Our standups got shorter and louder. Very settai."</span></li>
+        </ol>
+      </article>
+    </div>
+  </section>
+
+  <section id="modes">
+    <div class="wrap">
+      <h2>Two modes, one Siva</h2>
+      <div class="modes">
+        <div class="mode day">
+          <h3>Work mode</h3>
+          <p class="sub">The serious bit. Mostly.</p>
+          <ul>
+            <li><span>🧩</span><span>Finds the right people and puts them in the right seats</span></li>
+            <li><span>🤝</span><span>Turns a group of strangers into a team</span></li>
+            <li><span>🚀</span><span>Builds teams that build the future</span></li>
+            <li><span>📈</span><span>Keeps the energy up when the deadline is near</span></li>
+          </ul>
+        </div>
+        <div class="mode settai">
+          <h3>Settai mode</h3>
+          <p class="sub">Always on. Cannot be turned off.</p>
+          <ul>
+            <li><span>😜</span><span>Has a comeback ready before you finish the sentence</span></li>
+            <li><span>📸</span><span>Never takes a normal photo when a silly one is possible</span></li>
+            <li><span>🎤</span><span>Turns any group chat into a comedy show</span></li>
+            <li><span>😇</span><span>Pulls the innocent face when asked who did it</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="photos">
+    <div class="wrap">
+      <h2>Evidence wall</h2>
+      <div class="wall">
+        <figure>
+          <span class="pin" aria-hidden="true"></span>
+          <img src="photos/serious.jpg" alt="Black and white studio portrait of Siva in a leather jacket" loading="lazy" style="object-position: 25% center">
+          <figcaption>Serious mode. Lasted four seconds.</figcaption>
+        </figure>
+        <figure>
+          <span class="pin" aria-hidden="true"></span>
+          <img src="photos/quarry.jpg" alt="Siva in a blue hat looking out over a quarry lake" loading="lazy" style="object-position: 75% center">
+          <figcaption>Scouting a location for the next prank.</figcaption>
+        </figure>
+        <figure>
+          <span class="pin" aria-hidden="true"></span>
+          <img src="photos/blazer.jpg" alt="Siva in a black blazer and jeans against a yellow backdrop" loading="lazy" style="object-position: 50% center">
+          <figcaption>Main character. No audition needed.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section id="meter">
+    <div class="wrap"><div class="meter-box">
+      <h2>Settai meter</h2>
+      <p class="meter-intro">Every press adds a little more mischief. Fill the meter and see what happens. You've been warned.</p>
+      <div class="gauge" role="progressbar" aria-label="Settai level" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+        <div class="fill" style="width: 0%"></div>
+      </div>
+      <p class="level" aria-live="polite"><span class="face">😐</span> Calm and harmless</p>
+      <div class="actions">
+        <button class="btn" id="press" type="button">Add more settai</button>
+        <button class="btn ghost" id="reset" type="button">Calm him down</button>
+      </div>
+    </div></div>
+  </section>
+
+  <section id="follow" class="follow">
+    <div class="wrap">
+      <h2>Catch the settai live</h2>
+      <p>Photos, reels and the occasional chaos, straight from the source.</p>
+      <a class="handle" href="https://www.instagram.com/settai_siva007" target="_blank" rel="noopener">@settai_siva007</a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">Made with love and a little settai. © <span id="year"></span> Settai Siva</div>
+</footer>
+
+<script>
+  // Split the hero name into bouncy letters
+  document.querySelectorAll('.name .row').forEach(row => {
+    row.innerHTML = [...row.textContent].map(c => `<span class="ch">${c}</span>`).join('');
+  });
+
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  const levels = [
+    ['😐', 'Calm and harmless'],
+    ['🙂', 'Suspicious smile'],
+    ['😏', 'Planning something'],
+    ['🤭', 'Trying not to laugh'],
+    ['😜', 'Prank in progress'],
+    ['🤪', 'Full settai mode'],
+  ];
+  const fill = document.querySelector('.gauge .fill');
+  const gauge = document.querySelector('.gauge');
+  const level = document.querySelector('.level');
+  const press = document.getElementById('press');
+  const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let value = 0;
+
+  function render() {
+    fill.style.width = value + '%';
+    gauge.setAttribute('aria-valuenow', value);
+    const [face, text] = levels[Math.min(levels.length - 1, Math.floor(value / 20))];
+    level.innerHTML = `<span class="face">${face}</span> ${text}`;
+    press.textContent = value >= 100 ? 'Too much settai!' : 'Add more settai';
+  }
+
+  function emojiRain() {
+    if (reduced) return;
+    const emojis = ['😜', '🤪', '🚀', '😂', '⚡', '🔥', '😇', '🎉'];
+    for (let i = 0; i < 40; i++) {
+      const d = document.createElement('span');
+      d.className = 'drop';
+      d.textContent = emojis[i % emojis.length];
+      d.style.left = Math.random() * 100 + 'vw';
+      d.style.animationDuration = 1.8 + Math.random() * 2 + 's';
+      d.style.animationDelay = Math.random() * .8 + 's';
+      document.body.appendChild(d);
+      d.addEventListener('animationend', () => d.remove());
+    }
+    document.body.classList.remove('shake');
+    void document.body.offsetWidth;
+    document.body.classList.add('shake');
+  }
+
+  press.addEventListener('click', () => {
+    if (value >= 100) { emojiRain(); return; }
+    value = Math.min(100, value + 20);
+    render();
+    if (value >= 100) emojiRain();
+  });
+
+  document.getElementById('reset').addEventListener('click', () => {
+    value = 0;
+    render();
+  });
+</script>
+</body>
+</html>
